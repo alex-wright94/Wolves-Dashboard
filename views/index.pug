@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Wolf Dashboard
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
+    body
+        .container
+            .jumbotron
+                h1 Wolves
+
+            table.table
+                tr
+                    th Name
+                    th Breed
+                    th Weight
+                each wolf in wolfs
+                    tr
+                        td
+                            a(href="/wolf/"+wolf._id) #{wolf.name}
+                        td= wolf.breed
+                        td= wolf.weight
+
+            form(action="/create" method="post")
+                .row
+                    .col-sm-6
+                        .form-group
+                            label Name
+                            input(type="text" name="name").form-control
+                    .col-sm-6
+                        .form-group
+                            label Breed
+                            input(type="text" name="breed").form-control
+                        .form-group
+                            label Weight
+                            input(type="number" name="weight").form-control
+                button(type=submit).btn.btn-primary Submit
